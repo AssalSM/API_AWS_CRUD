@@ -96,7 +96,7 @@ function Page() {
   useEffect(() => {
     const fetchNotes = async () => {
       try {
-        const response = await axios.get(process.env.NEXT_PUBLIC_URL);
+        const response = await axios.get("https://cckfegvkg3.execute-api.us-east-1.amazonaws.com/prop/notes");
         console.log("notes", response.data);
         setNotes(response.data);
       } catch (error) {
@@ -113,7 +113,7 @@ function Page() {
     const body = { title, note, category, name, noteId };
     axios
       .put(
-        process.env.NEXT_PUBLIC_URL,
+        "https://cckfegvkg3.execute-api.us-east-1.amazonaws.com/prop/notes",
         body
       )
       .then(function (response) {
@@ -128,7 +128,7 @@ function Page() {
     const body = { title, note, category, name };
     await axios
       .post(
-        process.env.NEXT_PUBLIC_URL,
+        "https://cckfegvkg3.execute-api.us-east-1.amazonaws.com/prop/notes",
         body
       )
       .then(function (response) {
@@ -142,7 +142,7 @@ function Page() {
   const handeldelete = () => {
     axios
       .delete(
-        process.env.NEXT_PUBLIC_URL,
+        "https://cckfegvkg3.execute-api.us-east-1.amazonaws.com/prop/notes",
         { data: { noteId } }
       )
       .then((response) => {
@@ -203,7 +203,7 @@ function Page() {
                 )}
               </span>
             </div>
-            <GoChevronDown />
+          
           </div>
         </div>
         <Line />
