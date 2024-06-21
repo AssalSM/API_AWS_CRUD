@@ -1,5 +1,4 @@
 "use client";
-
 import React from "react";
 import { CognitoUserPool } from "amazon-cognito-identity-js";
 import { useState } from "react";
@@ -47,7 +46,7 @@ function Page() {
         }
         console.log("User name is " + result.user.getUsername());
         router.push("/confirmsignup"),
-        toast.success('🦄 Wow so easy!', {
+        toast.success(' Wow so easy!', {
           position: "top-center",
           autoClose: 5000,
           hideProgressBar: false,

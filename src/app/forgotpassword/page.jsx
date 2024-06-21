@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 
 
 const userPool = new CognitoUserPool(poolData);
-function page() {
+function Page() {
   const [username, setUsername] = useState("");
  
   const router = useRouter();
@@ -95,4 +95,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

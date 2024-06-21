@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const userPool = new CognitoUserPool(poolData);
 
-function page() {
+function Page() {
   const [username, setUsername] = useState("");
   const [code, setCode] = useState("");
   const [error, setError] = useState(null);
@@ -91,4 +91,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

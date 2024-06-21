@@ -34,7 +34,7 @@ function Page() {
   const [showModaledite, setshowModaledite] = useState(false);
   const [showDelete, setshowDelete] = useState(false);
   
-  
+
   useEffect(() => {
     const fetchNotes = async () => {
       try {
@@ -191,6 +191,7 @@ function Page() {
             <div className="flex">
               <Image
                 src={"/image.jpg"}
+                alt="image"
                 width={40}
                 height={40}
                 className="rounded-full"
@@ -213,7 +214,7 @@ function Page() {
         <Line />
         <div className="allcard">
           <div className="card">
-            <h1 className="titleCrad">Today's Notes</h1>
+            <h1 className="titleCrad">Today&apos;s Notes</h1>
             <br></br>
             <div>
               {notes.map((notes) => {
@@ -254,7 +255,7 @@ function Page() {
             </div>
           </div>
           <div className="card">
-            <h1 className="titleCrad">Tomorrow's Notes</h1>
+            <h1 className="titleCrad">Tomorrow&apos;s Notes</h1>
             <br></br>
             <div>
               {notes.map((notes) => {
@@ -298,7 +299,7 @@ function Page() {
             </div>
           </div>
           <div className="card">
-            <h1 className="titleCrad">This Week's Notes</h1>
+            <h1 className="titleCrad">This Week&apos;s Notes</h1>
             <br></br>
             <div>
               {notes.map((notes) => {
@@ -367,9 +368,9 @@ function Page() {
               <h1>category:</h1>
               <select onChange={(e) => setCategory(e.target.value)}>
                 <option value="Today's Notes">please select</option>
-                <option value="Today's Notes">Today's Notes</option>
-                <option value="Tomorrow's Notes">Tomorrow's Notes</option>
-                <option value="This Week's Notes">This Week's Notes</option>
+                <option value="Today's Notes">Today&apos;s Notes</option>
+                <option value="Tomorrow's Notes">Tomorrow&apos;s Notes</option>
+                <option value="This Week's Notes">This Week&apos;s Notes</option>
               </select>
             </span>
             <h3 className="titledes">Description :</h3>
@@ -411,9 +412,9 @@ function Page() {
                 onChange={(e) => setCategory(e.target.value)}
             
               >  <option value="Today's Notes">pleasee select</option>
-                <option value="Today's Notes">Today's Notes</option>
-                <option value="Tomorrow's Notes">Tomorrow's Notes</option>
-                <option value="This Week's Notes">This Week's Notes</option>
+                <option value="Today's Notes">Today&apos;s Notes</option>
+                <option value="Tomorrow's Notes">Tomorrow&apos;s Notes</option>
+                <option value="This Week's Notes">This Week&apos;s Notes</option>
               </select>
             </span>
             <h3 className="titledes">Description :</h3>

@@ -1,14 +1,15 @@
 "use client";
+import { useState } from 'react';
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { CognitoUserPool, CognitoUser } from 'amazon-cognito-identity-js';
-import { useState } from 'react';
+
 import { poolData } from '../cognito-config';
 import { useRouter } from "next/navigation";
 import "./reset.css"
 const userPool = new CognitoUserPool(poolData);
 
-function page() {
+function Page() {
     const [username, setUsername] = useState('');
     const [verificationCode, setVerificationCode] = useState('');
     const [newPassword, setNewPassword] = useState('');
@@ -99,4 +100,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;
