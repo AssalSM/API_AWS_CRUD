@@ -3,16 +3,20 @@ import { CognitoUserPool, CognitoUser } from "amazon-cognito-identity-js";
 import { useState } from "react";
 import { poolData } from "../cognito-config";
 import { useRouter } from "next/navigation";
-const userPool = new CognitoUserPool(poolData);
 import "./confirm.css";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+
+
+const userPool = new CognitoUserPool(poolData);
+
 function page() {
   const [username, setUsername] = useState("");
   const [code, setCode] = useState("");
   const [error, setError] = useState(null);
   const [message, setMessage] = useState("");
   const router = useRouter()
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const user = new CognitoUser({ Username: username, Pool: userPool });
@@ -45,6 +49,7 @@ function page() {
       });
     });
   };
+
 
   return (
     <div className="loginpage">

@@ -17,13 +17,12 @@ import { GrLogin } from "react-icons/gr";
 import { FaListUl } from "react-icons/fa";
 import { FaPen } from "react-icons/fa";
 import { FaUserAlt } from "react-icons/fa";
-import { GoChevronDown } from "react-icons/go";
 import { IoCloseSharp } from "react-icons/io5";
 import { IoLogOut } from "react-icons/io5";
 import { useSelector } from "react-redux";
 
 
-// import { v4 as uuidv4 } from "uuid";
+
 
 function Page() {
   const [notes, setNotes] = useState([]);
@@ -34,6 +33,23 @@ function Page() {
   const [showModal, setshowModal] = useState(false);
   const [showModaledite, setshowModaledite] = useState(false);
   const [showDelete, setshowDelete] = useState(false);
+  
+  
+  useEffect(() => {
+    const fetchNotes = async () => {
+      try {
+        const response = await axios.get(process.env.NEXT_PUBLIC_API_CRUD);
+        console.log("notes", response.data);
+        setNotes(response.data);
+      } catch (error) {
+        console.error("Error fetching notes:", error);
+      }
+    };
+
+    fetchNotes();
+   }, []);
+
+
 
   const user = useSelector((state) => state.user.user);
   if (!user) {
@@ -92,28 +108,13 @@ function Page() {
 
     return name;
   }
-
-  useEffect(() => {
-    const fetchNotes = async () => {
-      try {
-        const response = await axios.get("https://cckfegvkg3.execute-api.us-east-1.amazonaws.com/prop/notes");
-        console.log("notes", response.data);
-        setNotes(response.data);
-      } catch (error) {
-        console.error("Error fetching notes:", error);
-      }
-    };
-
-    fetchNotes();
-  }, []);
-
   const name = extractNameFromIdToken(user?.idToken);
 
   const handeledit = () => {
     const body = { title, note, category, name, noteId };
     axios
       .put(
-        "https://cckfegvkg3.execute-api.us-east-1.amazonaws.com/prop/notes",
+        process.env.NEXT_PUBLIC_API_CRUD,
         body
       )
       .then(function (response) {
@@ -128,7 +129,7 @@ function Page() {
     const body = { title, note, category, name };
     await axios
       .post(
-        "https://cckfegvkg3.execute-api.us-east-1.amazonaws.com/prop/notes",
+        process.env.NEXT_PUBLIC_API_CRUD,
         body
       )
       .then(function (response) {
@@ -142,7 +143,7 @@ function Page() {
   const handeldelete = () => {
     axios
       .delete(
-        "https://cckfegvkg3.execute-api.us-east-1.amazonaws.com/prop/notes",
+        process.env.NEXT_PUBLIC_API_CRUD,
         { data: { noteId } }
       )
       .then((response) => {
@@ -150,6 +151,9 @@ function Page() {
       })
       .catch((error) => {});
   };
+
+
+
 
   return (
     <div className="notepage">
